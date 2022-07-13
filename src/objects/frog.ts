@@ -72,7 +72,6 @@ export class Frog extends Phaser.GameObjects.Sprite {
     if ((this.body.blocked.right || this.body.blocked.left) &&
       !this.body.blocked.down) {
         this.isOnWall = true;
-        //console.log('ha');
       }
     else this.isOnWall = false;
   }

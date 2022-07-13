@@ -24,11 +24,11 @@ export class GameScene extends Phaser.Scene {
     super({ key: 'GameScene' });
   }
   preload(): void {
-    /*this.load.scenePlugin({
+    this.load.scenePlugin({
       key: 'AnimatedTiles',
       url: 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js',
       sceneKey: 'animatedTiles'
-    });*/
+    });
   }
   create(): void {
     this.map = this.make.tilemap({ key: `room${this.registry.get('room')}` });
@@ -36,7 +36,7 @@ export class GameScene extends Phaser.Scene {
     this.map.createLayer('backgroundLayer', this.map.addTilesetImage('graybackground'), 0, 0);
     this.foregroundLayer = this.map.createLayer('foregroundLayer', this.tileset, 0, 0);
     this.foregroundLayer.setName('foregroundLayer').setCollisionByProperty({ collide: true }).setDepth(2);
-    //this.animatedTiles.init(this.map);
+    this.animatedTiles.init(this.map);
     
     this.fruits = this.add.group({ runChildUpdate: true });
     this.boxes = this.add.group({ runChildUpdate: true });

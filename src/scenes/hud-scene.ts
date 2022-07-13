@@ -10,9 +10,9 @@ export class HUDScene extends Phaser.Scene {
       super({ key: 'HUDScene' });
     }
     create(): void {
-      this.roomText = this.add.text(-100, -120, `Room ${this.registry.get('room')}`);
+      this.roomText = this.add.text(-100, -120, `Room ${this.registry.get('room')}`, { fontSize: '12px' });
       this.container = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
-      this.scoreText = this.add.text(-10, -120, `Score ${this.registry.get('score')}`);
+      this.scoreText = this.add.text(-10, -120, `Score ${this.registry.get('score')}`, { fontSize: '12px' });
       const level = this.scene.get('GameScene');
       level.events.on('scoreChanged', this.updateScore, this);
       transitionScene(this);
