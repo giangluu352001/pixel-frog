@@ -3,6 +3,8 @@
 dist/
 node_modules/
 .cache
+.prettierignore
+.prettierrc
 
 # Files
 .DS_STORE
