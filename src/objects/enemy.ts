@@ -14,25 +14,6 @@ export class Enemy extends Phaser.GameObjects.Sprite {
     this.scene.physics.world.enable(this);
     this.scene.add.existing(this);
   }
-  protected showAndAddScore(): void {
-    this.scene.registry.values.score += this.dyingScoreValue;
-    this.scene.events.emit('scoreChanged');
-    let scoreText = this.scene.add
-      .text(
-        this.x,
-        this.y - 20,
-        this.dyingScoreValue.toString(),
-        { fontSize: '8px', color: '#006600' }
-      ).setOrigin(0, 0);
-    this.scene.add.tween({
-      targets: scoreText,
-      props: { y: scoreText.y - 25 },
-      duration: 800,
-      ease: 'Power0',
-      yoyo: false,
-      onComplete: () => scoreText.destroy()
-    });
-  }
   public getIsDying(): boolean {
     return this.isDying;
   }

@@ -1,19 +1,48 @@
 {
-    "preload": {
+    "preloasd": {
         "files": [{
                 "type": "tilemapTiledJSON",
-                "key": "level1",
-                "url": "./assets/maps/level1.json"
+                "key": "room1",
+                "url": "./assets/maps/room1.json"
             },
             {
                 "type": "tilemapTiledJSON",
-                "key": "level2",
-                "url": "./assets/maps/level2.json"
+                "key": "room2",
+                "url": "./assets/maps/room2.json"
             },
             {
                 "type": "image",
                 "key": "tiles",
                 "url": "./assets/tiles/tiles.png"
+            },
+            {
+                "type": "image",
+                "key": "graybackground",
+                "url": "./assets/tiles/Background/Gray.png"
+            },
+            {
+                "type": "image",
+                "key": "title",
+                "url": "./assets/images/title.png"
+            },
+            {
+                "type": "image",
+                "key": "transition",
+                "url": "./assets/images/Transition.png"
+            },
+            {
+                "type": "image",
+                "key": "chain",
+                "url": "./assets/sprites/Saw/Chain.png"
+            },
+            {
+                "type": "spritesheet",
+                "key": "fontwhite",
+                "url": "./assets/fonts/Text/TextWhite.png",
+                "frameConfig": {
+                    "frameWidth": 8,
+                    "frameHeight": 10
+                }
             },
             {
                 "type": "json",
@@ -22,8 +51,8 @@
             },
             {
                 "type": "spritesheet",
-                "key": "mario",
-                "url": "./assets/sprites/mario.png",
+                "key": "frogidle",
+                "url": "./assets/sprites/Frog/Idle.png",
                 "frameConfig": {
                     "frameWidth": 32,
                     "frameHeight": 32
@@ -31,106 +60,179 @@
             },
             {
                 "type": "spritesheet",
-                "key": "box",
-                "url": "./assets/sprites/box.png",
+                "key": "frogdoublejump",
+                "url": "./assets/sprites/Frog/DoubleJump.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
-                }
-            },
-            {
-                "type": "spritesheet",
-                "key": "brick",
-                "url": "./assets/sprites/brick.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
-                }
-            },
-            {
-                "type": "spritesheet",
-                "key": "rotatingCoin",
-                "url": "./assets/sprites/rotatingCoin.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
-                }
-            },
-            {
-                "type": "spritesheet",
-                "key": "coin",
-                "url": "./assets/sprites/coin.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
-                }
-            },
-            {
-                "type": "spritesheet",
-                "key": "fireball",
-                "url": "./assets/sprites/fireball.png",
-                "frameConfig": {
-                    "frameWidth": 512,
-                    "frameHeight": 197
-                }
-            },
-            {
-                "type": "spritesheet",
-                "key": "goomba",
-                "url": "./assets/sprites/goomba.png",
-                "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 32,
+                    "frameHeight": 32
                 }
             },
             {
                 "type": "image",
-                "key": "title",
-                "url": "./assets/images/title.png"
+                "key": "frogfall",
+                "url": "./assets/sprites/Frog/Fall.png"
             },
             {
                 "type": "spritesheet",
-                "key": "coin2",
-                "url": "./assets/collectibles/coin2.png",
+                "key": "froghit",
+                "url": "./assets/sprites/Frog/Hit.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "image",
+                "key": "frogjump",
+                "url": "./assets/sprites/Frog/Jump.png"
+            },
+            {
+                "type": "spritesheet",
+                "key": "frogrun",
+                "url": "./assets/sprites/Frog/Run.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
                 }
             },
             {
                 "type": "spritesheet",
-                "key": "flower",
-                "url": "./assets/collectibles/flower.png",
+                "key": "frogwalljump",
+                "url": "./assets/sprites/Frog/WallJump.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 32,
+                    "frameHeight": 32
                 }
             },
             {
                 "type": "spritesheet",
-                "key": "heart",
-                "url": "./assets/collectibles/heart.png",
+                "key": "breakbox",
+                "url": "./assets/sprites/Box/Break.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 28,
+                    "frameHeight": 24
                 }
             },
             {
                 "type": "spritesheet",
-                "key": "mushroom",
-                "url": "./assets/collectibles/mushroom.png",
+                "key": "hitbox",
+                "url": "./assets/sprites/Box/Hit.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 28,
+                    "frameHeight": 24
                 }
             },
             {
                 "type": "spritesheet",
-                "key": "star",
-                "url": "./assets/collectibles/star.png",
+                "key": "hitgoomba",
+                "url": "./assets/sprites/Goomba/Hit.png",
                 "frameConfig": {
-                    "frameWidth": 16,
-                    "frameHeight": 16
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "spritesheet",
+                "key": "rungoomba",
+                "url": "./assets/sprites/Goomba/Run.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "spritesheet",
+                "key": "darton",
+                "url": "./assets/sprites/Saw/On.png",
+                "frameConfig": {
+                    "frameWidth": 38,
+                    "frameHeight": 38
+                }
+            },
+            {
+                "type": "image",
+                "key": "idlebox",
+                "url": "./assets/sprites/Box/Idle.png"
+            },
+            {
+                "type": "image",
+                "key": "bigbar",
+                "url": "./assets/sprites/Bar/bigbar.png"
+            },
+            {
+                "type": "image",
+                "key": "dust",
+                "url": "./assets/images/dust.png"
+            },
+            {
+                "type": "image",
+                "key": "smallbar",
+                "url": "./assets/sprites/Bar/smallbar.png"
+            },
+            {
+                "type": "image",
+                "key": "idlebox",
+                "url": "./assets/sprites/Box/Idle.png"
+            },
+            {
+                "type": "image",
+                "key": "next",
+                "url": "./assets/images/Buttons/Next.png"
+            },
+            {
+                "type": "image",
+                "key": "previous",
+                "url": "./assets/images/Buttons/Previous.png"
+            },
+            {
+                "type": "image",
+                "key": "restart",
+                "url": "./assets/images/Buttons/Restart.png"
+            },
+            {
+                "type": "spritesheet",
+                "key": "apple",
+                "url": "./assets/sprites/Fruits/Apple.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "spritesheet",
+                "key": "collected",
+                "url": "./assets/sprites/Fruits/Collected.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "spritesheet",
+                "key": "banana",
+                "url": "./assets/sprites/Fruits/Banana.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
+                }
+            },
+            {
+                "type": "image",
+                "key": "chain",
+                "url": "./assets/sprites/Saw/Chain.png"
+            },
+            {
+                "type": "image",
+                "key": "offdart",
+                "url": "./assets/sprites/Saw/Off.png"
+            },
+            {
+                "type": "spritesheet",
+                "key": "ondart",
+                "url": "./assets/sprites/Saw/On.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32
                 }
             }
         ]

@@ -1,47 +1,91 @@
 {
     "anims": [{
-            "key": "smallMarioWalk",
+            "key": "frogrun",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "mario",
+                "key": "frogrun",
                 "start": 0,
-                "end": 3
-            },
-            "repeat": -1,
-            "frameRate": 20
-        },
-        {
-            "key": "bigMarioWalk",
-            "frames": {
-                "typeOfGeneration": "generateFrameNumbers",
-                "key": "mario",
-                "start": 8,
                 "end": 11
             },
             "repeat": -1,
             "frameRate": 20
         },
         {
-            "key": "smallMarioThrow",
+            "key": "frogidle",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "mario",
-                "start": 4,
+                "key": "frogidle",
+                "start": 0,
+                "end": 10
+            },
+            "repeat": 0,
+            "frameRate": 20
+        },
+        {
+            "key": "frogdoublejump",
+            "frames": {
+                "typeOfGeneration": "generateFrameNumbers",
+                "key": "frogdoublejump",
+                "start": 0,
                 "end": 5
             },
             "repeat": 0,
-            "frameRate": 8
+            "frameRate": 20
         },
         {
-            "key": "bigMarioThrow",
+            "key": "froghit",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "mario",
-                "start": 12,
-                "end": 13
+                "key": "froghit",
+                "start": 0,
+                "end": 6
             },
             "repeat": 0,
-            "frameRate": 8
+            "frameRate": 20
+        },
+        {
+            "key": "apple",
+            "frames": {
+                "typeOfGeneration": "generateFrameNumbers",
+                "key": "apple",
+                "start": 0,
+                "end": 16
+            },
+            "repeat": -1,
+            "frameRate": 20
+        },
+        {
+            "key": "collected",
+            "frames": {
+                "typeOfGeneration": "generateFrameNumbers",
+                "key": "collected",
+                "start": 0,
+                "end": 5
+            },
+            "repeat": 0,
+            "frameRate": 20
+        },
+        {
+            "key": "banana",
+            "frames": {
+                "typeOfGeneration": "generateFrameNumbers",
+                "key": "banana",
+                "start": 0,
+                "end": 16
+            },
+            "repeat": -1,
+            "frameRate": 20
+        },
+        {
+            "key": "frogwalljump",
+            "frames": {
+                "typeOfGeneration": "generateFrameNumbers",
+                "key": "frogwalljump",
+                "start": 0,
+                "end": 4
+            },
+            "repeat": -1,
+            "frameRate": 10
         },
         {
             "key": "firing",
@@ -55,48 +99,48 @@
             "frameRate": 5
         },
         {
-            "key": "rotatingCoin",
+            "key": "hitbox",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "rotatingCoin",
+                "key": "hitbox",
                 "start": 0,
-                "end": 1
+                "end": 3
             },
-            "repeat": -1,
-            "frameRate": 18
+            "repeat": 0,
+            "frameRate": 20
         },
         {
-            "key": "goombaWalk",
+            "key": "hitgoomba",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "goomba",
+                "key": "hitgoomba",
                 "start": 0,
-                "end": 1
+                "end": 4
             },
-            "repeat": -1,
-            "frameRate": 9
+            "repeat": 0,
+            "frameRate": 20
         },
         {
-            "key": "coin",
+            "key": "darton",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "coin",
+                "key": "darton",
                 "start": 0,
-                "end": 0
+                "end": 7
             },
             "repeat": -1,
-            "frameRate": 18
+            "frameRate": 20
         },
         {
-            "key": "flower",
+            "key": "rungoomba",
             "frames": {
                 "typeOfGeneration": "generateFrameNumbers",
-                "key": "flower",
+                "key": "rungoomba",
                 "start": 0,
-                "end": 1
+                "end": 15
             },
             "repeat": -1,
-            "frameRate": 18
+            "frameRate": 20
         }
     ]
 }

@@ -5,11 +5,10 @@ import { MenuScene } from './scenes/menu-scene';
 
 export const GameConfig: Phaser.Types.Core.GameConfig = {
   title: 'Super Mario Land',
-  width: 600,
-  height: 256,
-  zoom: 2,
+  width: 512,
+  height: 288,
   type: Phaser.AUTO,
-  parent: 'game',
+  zoom: 2,
   scene: [BootScene, MenuScene, HUDScene, GameScene],
   input: {
     keyboard: true
@@ -17,9 +16,9 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 475 },
-      debug: false
+      gravity: { y: 1000 },
+      debug: true
     }
   },
-  render: { pixelArt: true, antialias: false, roundPixels: true }
+  render: { pixelArt: true, antialias: false}
 };
