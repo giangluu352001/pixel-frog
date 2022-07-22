@@ -1,5 +1,6 @@
 import { Fruit } from './fruit';
 import { IBoxConstructor } from '../interfaces/box.interface';
+import { BreakBox } from './breakbox';
 export class Box extends Phaser.GameObjects.Sprite {
   body: Phaser.Physics.Arcade.Body;
   private boxContent: string;
@@ -60,28 +61,5 @@ export class Box extends Phaser.GameObjects.Sprite {
   public addScore(score: number): void {
     this.scene.registry.values.score += score;
     this.scene.events.emit('scoreChanged');
-  }
-}
-class BreakBox extends Phaser.GameObjects.Sprite {
-  body: Phaser.Physics.Arcade.Body;
-  constructor(scene: Phaser.Scene, x: number, y: number, frame: number) {
-    super(scene, x, y, 'breakbox', frame);
-    scene.add.existing(this);
-    scene.physics.world.enable(this);
-    this.body.setSize(this.width * 0.45, this.height * 0.45);
-  }
-  update(): void {
-    if (this.body && this.body.blocked.down)
-      this.body.setVelocity(0, 0);
-  }
-  public flash(): void {
-    this.alpha = 0;
-    this.scene.tweens.add({
-      targets: this,
-      alpha: 1,
-      duration: 200,
-      repeat: 5,
-      onComplete: () => this.destroy()
-    });
   }
 }
