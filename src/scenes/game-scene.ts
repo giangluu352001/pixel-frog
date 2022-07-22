@@ -31,47 +31,74 @@ export class GameScene extends Phaser.Scene {
     });
   }
   create(): void {
+    this.loadMap();
+    this.initGroup();
+    this.loadObjectsFromTilemap();
+    this.addColliders();
+
+    this.cameras.main.startFollow(this.player, true);
+    this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+  }
+
+  update(): void {
+    this.player.update();
+  }
+
+  private initGroup(): void {
+    this.fruits = this.add.group({ runChildUpdate: true });
+    this.boxes = this.add.group({ runChildUpdate: true });
+    this.bars = this.add.group({ runChildUpdate: true });
+    this.enemies = this.add.group({ runChildUpdate: true });
+    this.darts = this.add.group({ runChildUpdate: true });
+  }
+
+  private loadMap(): void {
     this.map = this.make.tilemap({ key: `room${this.registry.get('room')}` });
     this.tileset = this.map.addTilesetImage('tiles');
     this.map.createLayer('backgroundLayer', this.map.addTilesetImage('graybackground'), 0, 0);
     this.foregroundLayer = this.map.createLayer('foregroundLayer', this.tileset, 0, 0);
     this.foregroundLayer.setName('foregroundLayer').setCollisionByProperty({ collide: true }).setDepth(2);
     this.animatedTiles.init(this.map);
-    
-    this.fruits = this.add.group({ runChildUpdate: true });
-    this.boxes = this.add.group({ runChildUpdate: true });
-    this.bars = this.add.group({ runChildUpdate: true });
-    this.enemies = this.add.group({ runChildUpdate: true });
-    this.darts = this.add.group({ runChildUpdate: true });
-    this.loadObjectsFromTilemap();
-    let dartGroup = this.player.getDartGroup();
+  }
+
+  private addColliders(): void {
     this.physics.add.collider(this.player, this.foregroundLayer);
     this.physics.add.collider(this.player, this.boxes, this.playerHitBox);
     this.physics.add.collider(this.player, this.bars);
     this.physics.add.collider(this.player, this.darts, this.player.gotHit);
-    this.darts.getChildren().forEach((dart: Dart) => {
-      if (dart.getDart())
-        this.physics.add.collider(dart.getDart(), this.player, this.player.gotHit);
-    });
+
+    let dartGroup = this.player.getDartGroup();
+    this.addCollideWithSolids(dartGroup);
     this.addCollideWithSolids(this.fruits);
     this.addCollideWithSolids(this.enemies);
-    this.addCollideWithSolids(dartGroup);
-    this.boxes.getChildren().forEach((box: Box) => 
-    this.physics.add.collider(box.getBreakGroup(), this.foregroundLayer));
+    
+    this.darts.getChildren().forEach((dart: Dart) => {
+      if (dart.getDart())
+        this.physics.add.collider(
+          dart.getDart(),
+          this.player,
+          this.player.gotHit
+        );
+    });
+  
+    this.boxes.getChildren().forEach((box: Box) => {
+      this.physics.add.collider(
+        box.getBreakGroup(),
+        this.foregroundLayer
+      );
+    });
+
     this.physics.add.overlap(this.player, this.fruits, this.handleFruitsOverlap);
     this.physics.add.overlap(this.player, this.enemies, this.handlePlayerEnemyOverlap);
     this.physics.add.overlap(dartGroup, this.enemies, this.handleDartEnemyOverlap);
-    this.cameras.main.startFollow(this.player, true);
-    this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
   }
-  update(): void {
-    this.player.update();
-  }
+
   private addCollideWithSolids(objects: Phaser.GameObjects.Group) {
     this.physics.add.collider(objects, this.bars);
     this.physics.add.collider(objects, this.boxes);
     this.physics.add.collider(objects, this.foregroundLayer);
   }
+
   private loadObjectsFromTilemap(): void {
     const objects = this.map.getObjectLayer('objects').objects as any[];
     objects.forEach((object) => {
@@ -161,9 +188,11 @@ export class GameScene extends Phaser.Scene {
   private playerHitBox = (player: Frog, box: Box): void => {
     if ((box.body.touching.down || box.body.touching.up) && box.active) {
       box.body.checkCollision.none = true;
+      if (box.body.touching.up) player.body.setVelocityY(-300);
       box.hitBottomBox(this.fruits);
     }
   }
+
   private handleFruitsOverlap = (player: Frog, fruit: Fruit): void => {
     fruit.body.checkCollision.none = true;
     fruit.collected();

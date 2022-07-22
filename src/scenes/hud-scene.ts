@@ -13,20 +13,26 @@ export class HUDScene extends Phaser.Scene {
       this.roomText = this.add.text(-100, -120, `Room ${this.registry.get('room')}`, { fontSize: '12px' });
       this.container = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
       this.scoreText = this.add.text(-10, -120, `Score ${this.registry.get('score')}`, { fontSize: '12px' });
+
       const level = this.scene.get('GameScene');
       level.events.on('scoreChanged', this.updateScore, this);
+
       transitionScene(this);
       this.scene.launch('GameScene');
       this.scene.sleep('GameScene');
-      this.previousButton = this.add.image(170, -130, 'previous').setVisible(false)
-      .setInteractive().on('pointerdown', () => this.changeRoom(level, -1));
-      this.nextButton = this.add.image(190, -130, 'next').setInteractive()
-      .on('pointerdown', () => this.changeRoom(level, 1));
-      let restartButton = this.add.image(210, -130, 'restart').setInteractive()
-      .on('pointerdown', () => this.changeRoom(level, 0));
+
+      this.previousButton = this.add.image(170, -130, 'previous').setVisible(false);
+      this.nextButton = this.add.image(190, -130, 'next');
+      let restartButton = this.add.image(210, -130, 'restart');
+
       this.container.add(this.scoreText).add(this.previousButton)
       .add(this.nextButton).add(restartButton).add(this.roomText);
       this.container.setVisible(false);
+
+      this.previousButton.setInteractive().on('pointerdown', () => this.changeRoom(level, -1));
+      this.nextButton.setInteractive().on('pointerdown', () => this.changeRoom(level, 1));
+      restartButton.setInteractive().on('pointerdown', () => this.changeRoom(level, 0));
+      
       this.time.addEvent({
         delay: 800, 
         loop: false,
@@ -36,7 +42,7 @@ export class HUDScene extends Phaser.Scene {
           this.scene.wake('GameScene');
           this.scene.bringToTop('HUDScene');
         }
-      })
+      });
     }
     private updateScore(): void {
       this.scoreText.setText(`Score ${this.registry.get('score')}`);
