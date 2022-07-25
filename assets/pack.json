@@ -11,6 +11,11 @@
                 "url": "./assets/maps/room2.json"
             },
             {
+                "type": "tilemapTiledJSON",
+                "key": "room3",
+                "url": "./assets/maps/room3.json"
+            },
+            {
                 "type": "image",
                 "key": "tiles",
                 "url": "./assets/tiles/tiles.png"
