@@ -103,6 +103,7 @@ export class Frog extends Phaser.GameObjects.Sprite {
   }
   private jump = (): void => {
     if (!this.isJumping) {
+      this.isDoubleJumping = false;
       this.body.setVelocityY(-300);
       if (this.isOnWall) 
       {
